@@ -72,8 +72,12 @@ describe("Ballot", () => {
         });
 
         it("can not give right to vote for someone that has voted", async () => {
-            // TO-DO
-            throw Error("Not implemented");
+            const newVoterID = accounts[1].address;
+            await ballotContract.giveRightToVote(newVoterID);
+            const votersNewVoterID = await ballotContract.voters(newVoterID);
+            if (votersNewVoterID.voted == true){
+               expect(ballotContract.giveRightToVote(newVoterID)).to.be.revertedWith("");
+            }
         });
 
         it("cannot give right to vote for someone that has already voting rights", async () => {
