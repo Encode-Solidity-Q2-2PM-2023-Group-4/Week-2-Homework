@@ -35,6 +35,7 @@ async function main() {
         const name = ethers.decodeBytes32String(proposal.name);
         console.log({ index, name, proposal })
     }
+    console.log(`Wallet balance ${balance}`);
 }
 
 main().catch((error) => {
