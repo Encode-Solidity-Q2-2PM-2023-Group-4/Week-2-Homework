@@ -3,11 +3,6 @@ import { Ballot__factory } from "../typechain-types";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-function setupProvider() {
-    const provider = new ethers.JsonRpcProvider(process.env.RPC_ENDPOINT_URL ?? "");
-    return provider;
-}
-
 async function main() {
     const to = process.argv.slice(2);
     console.log(`\nDelegating vote to ${to}...`)
