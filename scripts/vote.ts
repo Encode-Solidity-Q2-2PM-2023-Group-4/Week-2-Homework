@@ -19,7 +19,6 @@ async function main() {
   
   console.log("Deploying Ballot contract");
   
-  //=============yg di bawah ini pertama kali belon ada
   const provider = setupProvider();
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
   const balanceBN = await provider.getBalance(wallet.address);
