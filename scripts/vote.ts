@@ -11,7 +11,7 @@ function setupProvider() {
 
 async function main() {
   //the first argument is the contract address
-  const contract_address = "0x1207e7f27c11a1657c92ce99983baea4a6f74ec6f16666559ff28aaa0e15414b";
+  const contract_address = "0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21";
   // the second argument is the proposal index
   const proposal_id = process.argv[2];
   
