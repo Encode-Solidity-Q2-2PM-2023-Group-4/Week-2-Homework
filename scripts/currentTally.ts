@@ -23,10 +23,11 @@ async function main() {
     const contract = new ethers.Contract("0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21", BallotJSON.abi, signer);
     const proposals = contract.proposals;
     console.log("PROPOSAL: VOTE_COUNT")
-    for (let i = 0; i < proposals.length; i++) {
-        const prop = await proposals(i);
-        // For some reason, these aren't printing to the terminal
-        console.log(`${ethers.decodeBytes32String(prop.name)}: ${prop.voteCount}`)
+    for (let i = 0; i < 8; i++){
+        const proposalNum = await contract.proposals(i);
+        const proposalNumVotes = await proposalNum.voteCount;
+        const proposalNumName = await proposalNum.name;
+        console.log(ethers.decodeBytes32String(proposalNumName) + ": " + proposalNumVotes);
     }
 }
 
