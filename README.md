@@ -20,3 +20,12 @@ The first interaction was giving the right to vote to Nanda with [`vote.ts`](scr
 
 <img width="1371" alt="Screenshot 2023-08-06 at 19 24 41" src="https://github.com/Encode-Solidity-Q2-2PM-2023-Group-4/Week-2-Homework/assets/96599839/0d3d17b2-b96d-40de-9cca-32ca2f7fdea8">
 
+
+### 2nd Voting Interaction:
+
+Function vote was called using the sript [`vote.ts`](scripts/vote.ts) and parameter passed = 2 (which corresponds to proposal 'Bitcoin').
+<br> tx: https://sepolia.etherscan.io/tx/0x8cc54d71feb141d27db23bcb6305cae2fab80280fcf9c8fdc619bc67404ca920
+
+![image](https://github.com/Encode-Solidity-Q2-2PM-2023-Group-4/Week-2-Homework/assets/97030306/77b12af8-4e9c-4dfb-867b-69dfa3b00393)
+
+
