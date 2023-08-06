@@ -29,6 +29,7 @@ async function main() {
         const proposalNumName = await proposalNum.name;
         console.log(ethers.decodeBytes32String(proposalNumName) + ": " + proposalNumVotes);
     }
+    console.log(`Wallet balance: ${balance}`);
 }
 
 main().catch((error) => {
