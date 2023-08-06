@@ -46,7 +46,7 @@ async function main() {
   await ballotContract.vote(proposal_id);
 
   const proposal_voted = await ballotContract.proposals(proposal_id);
-  console.log(`Updated total vote for ${proposal_voted.name} = ${proposal_voted.voteCount}.`);
+  console.log(`Updated total vote for ${proposal_voted.name} = ${await proposal_voted.voteCount}.`);
 }
 
 
