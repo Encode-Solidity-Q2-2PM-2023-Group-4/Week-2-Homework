@@ -13,12 +13,12 @@ Adam : [0xBe124408dE4a263d0e746e9dB41744f66C3e5DF4](https://sepolia.etherscan.io
 ### Deployment and Interaction:
 
 Contract was deployed with [`DeployWithEthers.ts`](scripts/DeployWithEthers.ts) at address [0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21](https://sepolia.etherscan.io/address/0x8820ae49d66eb1deb4b3940ee1a6ef38644a9a21) with Linus as chairperson.
-tx: https://sepolia.etherscan.io/tx/0xc9045431a8fe82e95882177c497970f71e1cac7998bfd2615b109944c6e825c8
+<br> tx: https://sepolia.etherscan.io/tx/0xc9045431a8fe82e95882177c497970f71e1cac7998bfd2615b109944c6e825c8
 
 <img width="1380" alt="Screenshot 2023-08-06 at 13 55 48" src="https://github.com/Encode-Solidity-Q2-2PM-2023-Group-4/Week-2-Homework/assets/96599839/bdb0da3a-20c2-4555-af4a-e9df74216c32">
 
 The first interaction was giving the right to vote to Nanda with [`vote.ts`](scripts/giveRightToVote.ts).
-tx: https://sepolia.etherscan.io/tx/0x1207e7f27c11a1657c92ce99983baea4a6f74ec6f16666559ff28aaa0e15414b
+<br> tx: https://sepolia.etherscan.io/tx/0x1207e7f27c11a1657c92ce99983baea4a6f74ec6f16666559ff28aaa0e15414b
 
 <img width="1371" alt="Screenshot 2023-08-06 at 19 24 41" src="https://github.com/Encode-Solidity-Q2-2PM-2023-Group-4/Week-2-Homework/assets/96599839/0d3d17b2-b96d-40de-9cca-32ca2f7fdea8">
 
