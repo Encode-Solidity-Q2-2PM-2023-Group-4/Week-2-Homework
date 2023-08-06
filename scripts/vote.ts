@@ -11,8 +11,8 @@ function setupProvider() {
 async function main() {
   //the first argument is the contract address
   const string_address = process.argv[2];  
-  // what is the ethers function to convert this string to solidity address type ?
-  const contract_address = ethers...xxxx(string_address) 
+  // what is the ethers function to convert this string to solidity address type? LINUS - I don't think we need this line as solidity will convert an address-like string to address
+  const contract_address = ethers...xxxx(string_address)
   // the second argument is the proposal name
   const proposal_name = process.argv[3];
   
@@ -28,6 +28,7 @@ async function main() {
     throw new Error("Not enough ether")
   }
 
+  // LINUS - We could use Nanda's method to generate a contract instance here instead for the sake of continuity. I think the rest of the issues will be resolved during this step and some restructuring/labelling of variables
   const ballotFactory = new Ballot__factory(wallet);
   const ballotContract = await ballotFactory.attach(contractaddress)
   await ballotContract.waitForDeployment();
@@ -58,5 +59,3 @@ main().catch((error) => {
     console.error(error);
     process.exitCode = 1;
   });
-  
-
