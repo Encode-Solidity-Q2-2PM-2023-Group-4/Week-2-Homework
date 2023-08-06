@@ -15,14 +15,10 @@ async function main() {
     const signer = wallet.connect(provider);
     const balanceBN = await provider.getBalance(wallet.address);
     const balance = Number(ethers.formatUnits(balanceBN));
-    console.log(`Wallet balance: ${balance}`);
-    if (balance < 0.01) {
-        throw new Error("Not enough ether");
-    }
 
     const contract = new ethers.Contract("0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21", BallotJSON.abi, signer);
     const proposals = contract.proposals;
-    console.log("PROPOSAL: VOTE_COUNT")
+    console.log("\nPROPOSAL: VOTE_COUNT")
     for (let i = 0; i < 8; i++){
         const proposalNum = await contract.proposals(i);
         const proposalNumVotes = await proposalNum.voteCount;

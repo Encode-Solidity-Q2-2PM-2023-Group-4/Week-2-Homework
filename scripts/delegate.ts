@@ -15,7 +15,7 @@ async function main() {
     const signer = wallet.connect(provider);
     const balanceBN = await provider.getBalance(wallet.address);
     const balance = Number(ethers.formatUnits(balanceBN));
-    console.log(`Wallet balance: ${balance}`);
+    console.log(`\nWallet balance: ${balance}`);
     if (balance < 0.01) {
         throw new Error("Not enough ether");
     }
@@ -31,6 +31,7 @@ async function main() {
 
     // print summary statement
     console.log(`Vote transferred to ${to}.`);
+    console.log(`Wallet balance: ${balance}\n`);
 }
 
 main().catch((error) => {

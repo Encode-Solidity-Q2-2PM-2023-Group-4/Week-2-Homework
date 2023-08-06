@@ -8,6 +8,7 @@ function setupProvider(){
     return provider;
 }
 async function main() {
+  console.log("\n --- Calculating winning proposal... ---")
   // sets up provider and wallet/signer from local env file and outputs wallet balance
   const provider = setupProvider();
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
@@ -31,7 +32,7 @@ async function main() {
 
   // if the winning proposal has an index of 0 (ethereum) and has 0 votes - then there have been no votes and hence no winner
   if (doWeHaveAWinner == 0 && proxyEthereumVotes == 0){
-    console.log("No winner");
+    console.log("\nNo winner.");
     return;
   }
 
@@ -66,7 +67,7 @@ async function main() {
   }
 
   if (tied == true){
-    console.log("The votes are tied between: " + tiedProposals.join(", ") + " each with " + highestVotes + " votes.");
+    console.log("\nThe votes are tied between: " + tiedProposals.join(", ") + " each with " + highestVotes + " votes.");
     return;
   }
 
@@ -75,7 +76,8 @@ async function main() {
   const winnerNumBytes = await winnerNum.name;
   const winnerNumName = ethers.decodeBytes32String(winnerNumBytes);
 
-  console.log("The winner is " + winnerNumName + " with " + winnerNumVotes + " votes.");
+  console.log("\nThe winner is " + winnerNumName + " with " + winnerNumVotes + " votes.");
+  console.log(`Wallet balance: ${balance}\n`);
 
  // LEGACY CODE PLEASE IGNORE
  /* // retreiving the winner name from the contract

@@ -19,7 +19,7 @@ async function main() {
     const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
     const balanceBN = await provider.getBalance(wallet.address);
     const balance = Number(ethers.formatUnits(balanceBN));
-    console.log(`Wallet balance ${balance}`);
+    console.log(`\nWallet balance ${balance}`);
     if (balance < 0.01) {
         throw new Error("Not enough ether");
     }
@@ -29,7 +29,7 @@ async function main() {
     );
     await ballotContract.waitForDeployment();
     const address = await ballotContract.getAddress();
-    console.log(`Contract deployed to the address ${address}`)
+    console.log(`\nContract deployed to the address ${address}`)
     for (let index = 0; index < proposals.length; index++) {
         const proposal = await ballotContract.proposals(index);
         const name = ethers.decodeBytes32String(proposal.name);

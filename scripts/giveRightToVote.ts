@@ -35,8 +35,7 @@ async function main() {
   /** @dev the giveRightToVote function of Ballot.sol can only be called by the chairperson = contract deployer  */
   /** @dev add check whether the person already has a right to vote  */
   await contract.giveRightToVote(addressNewVoter);
-  console.log(`New Voter Address ${addressNewVoter} has been granted voting rights.`);
-  console.log(`Current proposals are...`);
+  console.log(`\nNew Voter Address ${addressNewVoter} has been granted voting rights.\n`);
 
 }
 
