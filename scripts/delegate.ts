@@ -21,10 +21,11 @@ async function main() {
     }
 
     // Create contract instance from the contract address, abi and signer
-    const ballotContract = new ethers.Contract(process.argv.slice(2)[0], BallotJSON.abi, signer);
+    const contract_address = "0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21";
+    const ballotContract = new ethers.Contract(contract_address, BallotJSON.abi, signer);
 
     // initialising parameters and call delegation
-    const to = process.argv.slice(2)[1];
+    const to = process.argv[2];
     console.log(`\nDelegating vote to ${to}...`)
     await ballotContract.delegate(to);
 
