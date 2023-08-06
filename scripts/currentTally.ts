@@ -25,6 +25,7 @@ async function main() {
     console.log("PROPOSAL: VOTE_COUNT")
     for (let i = 0; i < proposals.length; i++) {
         const prop = await proposals(i);
+        // For some reason, these aren't printing to the terminal
         console.log(`${ethers.decodeBytes32String(prop.name)}: ${prop.voteCount}`)
     }
 }
