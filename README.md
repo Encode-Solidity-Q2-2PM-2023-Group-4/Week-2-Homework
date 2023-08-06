@@ -30,7 +30,7 @@ Function vote was called using the sript [`vote.ts`](scripts/vote.ts) and parame
 ![image](https://github.com/Encode-Solidity-Q2-2PM-2023-Group-4/Week-2-Homework/assets/129112008/23f0d1a8-8bef-4801-95f8-534117b54ca9)
 
 
-### 2nd Voting Interaction:
+### 3rd Voting Interaction:
 
 Function vote was called using the sript [`vote.ts`](scripts/vote.ts) and parameter passed = 2 (which corresponds to proposal 'Bitcoin').
 <br> tx: https://sepolia.etherscan.io/tx/0x8cc54d71feb141d27db23bcb6305cae2fab80280fcf9c8fdc619bc67404ca920
