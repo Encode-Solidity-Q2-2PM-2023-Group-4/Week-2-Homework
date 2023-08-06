@@ -43,5 +43,5 @@ Function vote was called using the sript [`vote.ts`](scripts/vote.ts) and parame
 An earlier interaction was by giving the right to vote to Antony with (scripts/giveRightToVote.ts).
 https://sepolia.etherscan.io/tx/0xe1de04ece108dda564855ce4167623c24860b339d84f6ed562ed2a908f75bd62
 
-It is then followed by Antony's delegate interaction by delegating the vote to Linus using (scripts/delegate.ts) 
+It is then followed by Antony's delegate interaction by delegating the vote to Linus using (scripts/delegate.ts), which leads to increasing the Binance's vote by 1.   
 (https://sepolia.etherscan.io/tx/0xbb05522c49b84bb31b33b5d4aa0fadf60181ff17ecb66667fe33271b1fd6974f)
