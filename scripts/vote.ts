@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { Ballot__factory } from "../typechain-types";
-import { BallotJSON } from "../artifacts/contracts/Ballot.sol/Ballot.json"
+import * as BallotJSON from "../artifacts/contracts/Ballot.sol/Ballot.json"
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -20,6 +20,7 @@ async function main() {
   
   const provider = setupProvider();
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
+  const Signer = wallet.connect(provider);
   const balanceBN = await provider.getBalance(wallet.address);
   const balance = Number(ethers.formatUnits(balanceBN));
   console.log(`Wallet balance ${balance}`);
