@@ -21,7 +21,19 @@ async function main() {
   
   // creating a contract instance from the deployed contract address and relevant abi and signer
   const ballotContract = new ethers.Contract("0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21", BallotJSON.abi, signer);
-  // Maybe here (^) we could remove the hardcoded address, allowing for us to run tests on dummy contracts.
+
+  // finds the index of the winning proposal
+  const doWeHaveAWinner = await ballotContract.winningProposal();
+
+  // finds the vote count of the Ethereum proposal
+  const proxyEthereum = await ballotContract.proposals(0);
+  const proxyEthereumVotes = await proxyEthereum.voteCount;
+
+  // if the winning proposal has an index of 0 (ethereum) and has 0 votes - then there have been no votes and hence no winner
+  if (doWeHaveAWinner == 0 && proxyEthereumVotes == 0){
+    console.log("No winner");
+    return;
+  }
 
   // retreiving the winner name from the contract
   const winnerBytes = await ballotContract.winnerName();
