@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import * as BallotJSON from "../artifacts/contracts/Ballot.sol/Ballot.json";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -8,11 +9,27 @@ function setupProvider() {
 }
 
 async function main() {
+    // setup provider and wallet/signer
+    const provider = setupProvider();
+    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
+    const signer = wallet.connect(provider);
+    const balanceBN = await provider.getBalance(wallet.address);
+    const balance = Number(ethers.formatUnits(balanceBN));
+    console.log(`Wallet balance: ${balance}`);
+    if (balance < 0.01) {
+        throw new Error("Not enough ether");
+    }
+
+    // Create contract instance from the contract address, abi and signer
+    const ballotContract = new ethers.Contract("0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21", BallotJSON.abi, signer);
+
+    // initialising parameters and call delegation
     const to = process.argv.slice(2);
     console.log(`\nDelegating vote to ${to}...`)
-    // TO-DO
-    // - ACCESS THE BALLOT CONTRACT ADDRESS
-    // - CALL THE DELEGATE FUNCTION
+    await ballotContract.delegate(to);
+
+    // print summary statement
+    console.log(`Vote transferred to ${to}.`);
 }
 
 main().catch((error) => {
