@@ -21,6 +21,7 @@ async function main() {
   
   // creating a contract instance from the deployed contract address and relevant abi and signer
   const ballotContract = new ethers.Contract("0x8820AE49d66eB1DeB4b3940Ee1A6eF38644a9A21", BallotJSON.abi, signer);
+  // Maybe here (^) we could remove the hardcoded address, allowing for us to run tests on dummy contracts.
 
   // retreiving the winner name from the contract
   const winnerBytes = await ballotContract.winnerName();
