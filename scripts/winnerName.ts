@@ -35,14 +35,26 @@ async function main() {
     return;
   }
 
-  // retreiving the winner name from the contract
+  // the length of the proposals[] - can't get directly from contract so it was defined explicitly here
+  const numberOfProposals = 8;
+
+  // for loop printing the name of each proposal and the number of votes each one has
+  for (let i = 0; i < numberOfProposals; i++){
+    const proposalNum = await ballotContract.proposals(i);
+    const proposalNumVotes = await proposalNum.voteCount;
+    const proposalNumName = await proposalNum.name;
+    console.log(ethers.decodeBytes32String(proposalNumName) + ": " + proposalNumVotes);
+  }
+
+ // LEGACY CODE PLEASE IGNORE
+ /* // retreiving the winner name from the contract
   const winnerBytes = await ballotContract.winnerName();
 
   // converts winner name into human readable string format (previously in bytes32)
   const winnerString = ethers.decodeBytes32String(winnerBytes);
 
   // outputs the name of the winning proposal
-  console.log("Winning proposal: " + winnerString);
+  console.log("Winning proposal: " + winnerString); */
 
 }
 
