@@ -38,13 +38,44 @@ async function main() {
   // the length of the proposals[] - can't get directly from contract so it was defined explicitly here
   const numberOfProposals = 8;
 
+  // global variable that can be ammended by the for loop and manipulated to return details of the winning proposal
+  let tied = false;
+  let winningIndex = 0;
+  let highestVotes = proxyEthereumVotes;
+  let tiedProposals = [];
+
   // for loop printing the name of each proposal and the number of votes each one has
   for (let i = 0; i < numberOfProposals; i++){
     const proposalNum = await ballotContract.proposals(i);
     const proposalNumVotes = await proposalNum.voteCount;
-    const proposalNumName = await proposalNum.name;
-    console.log(ethers.decodeBytes32String(proposalNumName) + ": " + proposalNumVotes);
+    const proposalNumBytes = await proposalNum.name;
+    const proposalNumName = ethers.decodeBytes32String(proposalNumBytes);
+
+    if (highestVotes < proposalNumVotes){
+      highestVotes = proposalNumVotes;
+      winningIndex = i;
+      tiedProposals = [];
+      tiedProposals.push(proposalNumName);
+      tied = false;
+    }
+
+    else if (highestVotes == proposalNumVotes){
+      tiedProposals.push(proposalNumName)
+      tied = true;
+    }
   }
+
+  if (tied == true){
+    console.log("The votes are tied between: " + tiedProposals.join(", ") + " each with " + highestVotes + " votes.");
+    return;
+  }
+
+  const winnerNum = await ballotContract.proposals(winningIndex);
+  const winnerNumVotes = await winnerNum.voteCount;
+  const winnerNumBytes = await winnerNum.name;
+  const winnerNumName = ethers.decodeBytes32String(winnerNumBytes);
+
+  console.log("The winner is " + winnerNumName + " with " + winnerNumVotes + " votes.");
 
  // LEGACY CODE PLEASE IGNORE
  /* // retreiving the winner name from the contract
